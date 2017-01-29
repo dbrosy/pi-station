@@ -241,7 +241,8 @@ def main():
                         print("Uploading data to Initial State")
                         try:
                             # Setup streamer for Initial State
-                            streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, debug_level=1)
+                            # streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, debug_level=1)
+                            streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
                             time.sleep(0.1)
                             #streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
                             #streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
