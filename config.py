@@ -1,6 +1,6 @@
 class Config:
     # ---------- Constants ------------
-    MEASUREMENT_INTERVAL = 5
+    MEASUREMENT_INTERVAL = 10
     # ---------------------------------
     # ------ Weather Underground ------
     STATION_ID = ""
