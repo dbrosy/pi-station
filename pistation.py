@@ -373,7 +373,7 @@ try:
     # clear the screen
     sense.clear()
 
-    compass()
+    # compass()
 
     # get the current temp to use when checking the previous measurement
     if USE_METRIC:
