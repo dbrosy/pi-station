@@ -232,19 +232,21 @@ def main():
                     # Upload the weather data to Initial State
                     # ========================================================
                     # is IS_UPLOAD enabled (True)?                        
-                    if IS_UPLOAD:
-                        # Setup streamer for Initial State
-                        streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
-                      
-                        print("Uploading data to Initial State upload")
-                        #streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
-                        #streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
-                        #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
-                        streamer.log(":sunny: " + " Temperature(C)", temp_c)
-                        streamer.log(":sweat_drops: " + " Humidity(%)", humidity)
-                        streamer.log(":cloud: " + " Pressure(IN)", pressure)                        
+                    if IS_UPLOAD:         
+                        print("Uploading data to Initial State")
+                        try:
+                            # Setup streamer for Initial State
+                            streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
+                            #streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
+                            #streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
+                            #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
+                            streamer.log(":sunny: " + " Temperature(C)", temp_c)
+                            streamer.log(":sweat_drops: " + " Humidity(%)", humidity)
+                            streamer.log(":cloud: " + " Pressure(IN)", pressure)
+                        except:
+                            print("Exception:", sys.exc_info()[0], SLASH_N)
                     else:
-                        print("Skipping Initial State upload")
+                        print("Skipping Initial State")
                         
         # wait a second then check again
         # You can always increase the sleep value below to check less often
