@@ -260,9 +260,9 @@ print("Station ID:", wu_station_id)
 # ============================================================================
 print("\nInitializing Initial State configuration")
 is_bucket_name = Config.BUCKET_NAME
-is_bucket_id = Config.BUCKET_ID
 is_bucket_key = Config.BUCKET_KEY
-if (is_bucket_name is None) or (is_bucket_id is None) or (is_bucket_key is None):
+is_access_key = Config.ACCESS_KEY
+if (is_bucket_name is None) or (is_bucket_key is None) or (is_access_key is None):
     print("Missing values from the Initial State configuration file\n")
     sys.exit(1)
 
