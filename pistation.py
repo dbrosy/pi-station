@@ -142,7 +142,7 @@ def main():
     global last_temp
     
     # Setup streamer for Initial State
-    streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
+    streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, , debug_level=1)
     
     # initialize the lastMinute variable to the current time to start
     last_minute = datetime.datetime.now().minute
@@ -172,9 +172,9 @@ def main():
             pressure = round(sense.get_pressure() * 0.0295300, 1)
             pressure_hpa = round(sense.get_pressure(), 1)
             if USE_METRIC:
-                print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
+                #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
             else:
-                print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
+                #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
             # get the current minute
             current_minute = datetime.datetime.now().minute
