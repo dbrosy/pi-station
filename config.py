@@ -8,5 +8,6 @@ class Config:
     BUCKET_NAME = ""
     BUCKET_KEY = ""
     ACCESS_KEY = ""
+    SENSOR_LOCATION_NAME = ""
     # ---------------------------------
     
