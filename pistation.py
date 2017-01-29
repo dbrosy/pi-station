@@ -46,6 +46,9 @@ SINGLE_HASH = "#"
 HASHES = "########################################"
 SLASH_N = "\n"
 
+DEBUG = True
+
+
 # constants used to display an up and down arrows plus bars
 # modified from https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/
 # set up the colours (blue, red, empty)
@@ -171,10 +174,11 @@ def main():
             # convert pressure from millibars to inHg before posting
             pressure = round(sense.get_pressure() * 0.0295300, 1)
             pressure_hpa = round(sense.get_pressure(), 1)
-            if USE_METRIC:
-                #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
-            else:
-                #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
+            if (DEBUG):
+              if USE_METRIC:
+                  #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
+              else:
+                  #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
             # get the current minute
             current_minute = datetime.datetime.now().minute
