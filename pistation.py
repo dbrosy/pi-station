@@ -178,8 +178,8 @@ def main():
                 # Console output enabled
                 if (USE_METRIC):
                     #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
-                else:
-                    #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
+                    else:
+                        #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
             # get the current minute
             current_minute = datetime.datetime.now().minute
