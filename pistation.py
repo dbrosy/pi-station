@@ -329,6 +329,7 @@ try:
     print("Initializing the Sense HAT client")
     sense = SenseHat()
     # sense.set_rotation(180)
+    sense.low_light = True
     # then write some text to the Sense HAT's 'screen'
     sense.show_message("Init", text_colour=[255, 255, 0], back_colour=[0, 0, 255])
     # clear the screen
@@ -352,5 +353,6 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print("\nExiting application\n")
+        sense.low_light = False
         sense.clear()
         sys.exit(0)
