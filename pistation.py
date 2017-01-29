@@ -24,7 +24,7 @@ from config import Config
 from sense_hat import SenseHat
 
 # Required for Initial State 
-from ISStreamer.Streamer import Streamer  
+from ISStreamer.Streamer import Streamer
 
 
 # ============================================================================
@@ -96,8 +96,8 @@ led_loop = [
     2, 3]
 
 
-def compass(sense):
-    sense.set_imu_config(False, False, True)
+def compass():
+    sense.set_imu_config(True, True, True)
     sense.set_rotation(0)
     sense.clear()
 
@@ -373,8 +373,8 @@ try:
     # clear the screen
     sense.clear()
 
-    direction = compass(sense)
-    
+    compass()
+
     # get the current temp to use when checking the previous measurement
     if USE_METRIC:
         last_temp = round(get_temp(), 1)
