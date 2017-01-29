@@ -268,7 +268,7 @@ if (is_bucket_name is None) or (is_bucket_key is None) or (is_access_key is None
 
 # we made it this far, so it must have worked...
 print("Successfully read Initial State configuration values")
-print("Station ID:", is_bucket_name)
+print("Bucket Name:", is_bucket_name)
 
 # ============================================================================
 # initialize the Sense HAT object
