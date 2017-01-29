@@ -103,16 +103,20 @@ def get_cpu_temp():
 
 # use moving average to smooth readings
 def get_smooth(x):
-    # do we have the t object?
-    if not hasattr(get_smooth, "t"):
-        # then create it
-        get_smooth.t = [x, x, x]
-    # manage the rolling previous values
-    get_smooth.t[2] = get_smooth.t[1]
-    get_smooth.t[1] = get_smooth.t[0]
-    get_smooth.t[0] = x
-    # average the three last temperatures
-    xs = (get_smooth.t[0] + get_smooth.t[1] + get_smooth.t[2]) / 3
+    
+    try:
+        # do we have the t object?
+        if not hasattr(get_smooth, "t"):
+            # then create it
+            get_smooth.t = [x, x, x]
+        # manage the rolling previous values
+        get_smooth.t[2] = get_smooth.t[1]
+        get_smooth.t[1] = get_smooth.t[0]
+        get_smooth.t[0] = x
+        # average the three last temperatures
+        xs = (get_smooth.t[0] + get_smooth.t[1] + get_smooth.t[2]) / 3
+    except:
+        print("Exception:", sys.exc_info()[0], SLASH_N)
     return xs
 
 
