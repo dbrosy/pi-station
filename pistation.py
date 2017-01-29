@@ -97,7 +97,7 @@ def get_cpu_temp():
     # 'borrowed' from https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=111457
     # executes a command at the OS to pull in the CPU temperature
     res = os.popen('vcgencmd measure_temp').readline()
-    print(res)
+    print(res.replace("temp=", "").replace("'C\n", ""))
     return float(res.replace("temp=", "").replace("'C\n", ""))
 
 
