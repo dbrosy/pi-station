@@ -31,7 +31,7 @@ from ISStreamer.Streamer import Streamer
 # Constants
 # ============================================================================
 # specifies how often to measure values from the Sense HAT (in minutes)
-MEASUREMENT_INTERVAL = 10  # minutes
+MEASUREMENT_INTERVAL = 1  # minutes (10)
 # Set to False when testing the code and/or hardware
 # Use Metric instead of Imperial
 USE_METRIC = True
@@ -234,7 +234,7 @@ def main():
                     # is IS_UPLOAD enabled (True)?                        
                     if IS_UPLOAD:
                         # Setup streamer for Initial State
-                        streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_buket_key, access_key=is_access_key)
+                        streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
                       
                         print("Uploading data to Initial State upload")
                         streamer.log(":sunny: " + SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
