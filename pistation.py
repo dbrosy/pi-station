@@ -167,8 +167,9 @@ def main():
             humidity = round(sense.get_humidity(), 0)
             # convert pressure from millibars to inHg before posting
             pressure = round(sense.get_pressure() * 0.0295300, 1)
+            pressure_hpa = round(sense.get_pressure(), 1)
             if USE_METRIC:
-                print("Temp: %sC (%sF), Pressure: %s inHg, Humidity: %s%%" % (temp_c, temp_f, pressure, humidity))
+                print("Temp: %sC (%sF), Pressure: %s inHg, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
             else:
                 print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
@@ -242,7 +243,7 @@ def main():
                             #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
                             streamer.log(":sunny: " + " Temperature(C)", temp_c)
                             streamer.log(":sweat_drops: " + " Humidity(%)", humidity)
-                            streamer.log(":cloud: " + " Pressure(IN)", pressure)
+                            streamer.log(":cloud: " + " Pressure(IN)", pressure_hpa)
                         except:
                             print("Exception:", sys.exc_info()[0], SLASH_N)
                     else:
