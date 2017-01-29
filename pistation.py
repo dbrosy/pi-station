@@ -237,9 +237,9 @@ def main():
                         streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
                       
                         print("Uploading data to Initial State upload")
-                        streamer.log(":sunny: " + SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
-                        streamer.log(":sweat_drops: " + SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
-                        streamer.log(":cloud: " + SENSOR_LOCATION_NAME + " Pressure(IN)", pressure_in)
+                        streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
+                        streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
+                        streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure_in)
                     else:
                         print("Skipping Initial State upload")
                         
