@@ -33,7 +33,9 @@ from config import Config
 MEASUREMENT_INTERVAL = 10  # minutes
 # Set to False when testing the code and/or hardware
 # Set to True to enable upload of weather data to Weather Underground
-WEATHER_UPLOAD = True
+WU_UPLOAD = True
+# Set to True to enable upload of weather data to Initial State
+IS_UPLOAD = True
 # the weather underground URL used to upload weather data
 WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
 # some string constants
@@ -194,8 +196,8 @@ def main():
                     # ========================================================
                     # Upload the weather data to Weather Underground
                     # ========================================================
-                    # is weather upload enabled (True)?
-                    if WEATHER_UPLOAD:
+                    # is WU_UPLOAD enabled (True)?
+                    if WU_UPLOAD:
                         # From http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol
                         print("Uploading data to Weather Underground")
                         # build a weather data object
@@ -220,6 +222,15 @@ def main():
                     else:
                         print("Skipping Weather Underground upload")
 
+                    # ========================================================
+                    # Upload the weather data to Initial State
+                    # ========================================================
+                    # is IS_UPLOAD enabled (True)?                        
+                    if IS_UPLOAD:
+                        print("Uploading data to Initial State upload")
+                    else:
+                        print("Skipping Initial State upload")
+                        
         # wait a second then check again
         # You can always increase the sleep value below to check less often
         time.sleep(1)  # this should never happen since the above is an infinite loop
