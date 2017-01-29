@@ -97,6 +97,7 @@ def get_cpu_temp():
     # 'borrowed' from https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=111457
     # executes a command at the OS to pull in the CPU temperature
     res = os.popen('vcgencmd measure_temp').readline()
+    print(res)
     return float(res.replace("temp=", "").replace("'C\n", ""))
 
 
@@ -134,7 +135,7 @@ def get_temp():
     t_cpu = get_cpu_temp()
     # Calculate the 'real' temperature compensating for CPU heating
     t_corr = t - ((t_cpu - t) / 1.5)
-    print("Temp (h): %s, Temp (p): %s, Temp (a): %s, Temp (cpu): $s" % (t1, t2, t, str(t_cpu))
+    # print("Temp (h): %s, Temp (p): %s, Temp (a): %s, Temp (cpu): $s" % (t1, t2, t, str(t_cpu))
     # print("Temp (h): %s, Temp (p): %s, Temp (a): %s, Temp (cpu): $s, Temp (corr): %s" % (t1, t2, t, t_cpu, t_corr))
     # Finally, average out that value across the last three readings
     t_corr = get_smooth(t_corr)
