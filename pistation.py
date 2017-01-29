@@ -40,6 +40,8 @@ WU_UPLOAD = True
 IS_UPLOAD = True
 # the weather underground URL used to upload weather data
 WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
+# Setup streamer for Initial State
+streamer = Streamer(bucket_name=BUCKET_NAME, bucket_key=BUCKET_KEY, access_key=ACCESS_KEY)
 # some string constants
 SINGLE_HASH = "#"
 HASHES = "########################################"
@@ -233,6 +235,9 @@ def main():
                     # is IS_UPLOAD enabled (True)?                        
                     if IS_UPLOAD:
                         print("Uploading data to Initial State upload")
+                        streamer.log(":sunny: " + SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
+                        streamer.log(":sweat_drops: " + SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
+                        streamer.log(":cloud: " + SENSOR_LOCATION_NAME + " Pressure(IN)", pressure_in)
                     else:
                         print("Skipping Initial State upload")
                         
