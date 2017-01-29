@@ -140,7 +140,10 @@ def get_temp():
 
 def main():
     global last_temp
-
+    
+    # Setup streamer for Initial State
+    global streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
+    
     # initialize the lastMinute variable to the current time to start
     last_minute = datetime.datetime.now().minute
     # on startup, just use the previous minute as lastMinute
@@ -236,14 +239,13 @@ def main():
                     if IS_UPLOAD:         
                         print("Uploading data to Initial State")
                         try:
-                            # Setup streamer for Initial State
-                            streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key)
+
                             #streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
                             #streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
                             #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
-                            streamer.log(":sunny: " + " Temperature(C)", temp_c)
-                            streamer.log(":sweat_drops: " + " Humidity(%)", humidity)
-                            streamer.log(":cloud: " + " Pressure(hPa)", pressure_hpa)
+                            streamer.log(":sunny: " + " Temperature (C)", temp_c)
+                            streamer.log(":sweat_drops: " + " Humidity (%)", humidity)
+                            streamer.log(":cloud: " + " Pressure (hPa)", pressure_hpa)
                         except:
                             print("Exception:", sys.exc_info()[0], SLASH_N)
                     else:
