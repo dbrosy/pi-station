@@ -372,6 +372,9 @@ try:
     sense.show_message("Init", text_colour=[255, 255, 0], back_colour=[0, 0, 255])
     # clear the screen
     sense.clear()
+
+    direction = compass(sense)
+    
     # get the current temp to use when checking the previous measurement
     if USE_METRIC:
         last_temp = round(get_temp(), 1)
