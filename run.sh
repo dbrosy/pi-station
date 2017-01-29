@@ -5,3 +5,5 @@
 
 echo "Starting Weather Station"
 /usr/bin/python /home/pi/pi-station/pistaton.py
+
+# not currently used
