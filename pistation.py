@@ -32,6 +32,8 @@ from config import Config
 # specifies how often to measure values from the Sense HAT (in minutes)
 MEASUREMENT_INTERVAL = 10  # minutes
 # Set to False when testing the code and/or hardware
+# Use Metric instead of Imperial
+USE_METRIC = True
 # Set to True to enable upload of weather data to Weather Underground
 WU_UPLOAD = True
 # Set to True to enable upload of weather data to Initial State
@@ -164,7 +166,10 @@ def main():
             humidity = round(sense.get_humidity(), 0)
             # convert pressure from millibars to inHg before posting
             pressure = round(sense.get_pressure() * 0.0295300, 1)
-            print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
+            if USE_METRIC:
+                print("Temp: %sC (%sF), Pressure: %s inHg, Humidity: %s%%" % (temp_c, temp_f, pressure, humidity))
+            else:
+                print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
             # get the current minute
             current_minute = datetime.datetime.now().minute
@@ -293,7 +298,11 @@ try:
     # clear the screen
     sense.clear()
     # get the current temp to use when checking the previous measurement
-    last_temp = round(c_to_f(get_temp()), 1)
+    if USE_METRIC:
+        last_temp = round(get_temp(), 1)
+    else:
+        last_temp = round(c_to_f(get_temp()), 1)
+    
     print("Current temperature reading:", last_temp)
 except:
     print("Unable to initialize the Sense HAT library:", sys.exc_info()[0])
