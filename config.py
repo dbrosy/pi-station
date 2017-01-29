@@ -1,7 +1,12 @@
 class Config:
-    # Weather Underground
+    # ------ Weather Underground ------
     STATION_ID = ""
     STATION_KEY = ""
+    # ---------------------------------    
     
-    # Initial State
+    # --------- Initial State ---------
+    BUCKET_NAME = ""
+    BUCKET_KEY = ""
+    ACCESS_KEY = ""
+    # ---------------------------------
     
