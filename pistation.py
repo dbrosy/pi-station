@@ -256,6 +256,21 @@ print("Station ID:", wu_station_id)
 # print("Station key:", wu_station_key)
 
 # ============================================================================
+#  Read Initial State Configuration Parameters
+# ============================================================================
+print("\nInitializing Initial State configuration")
+is_bucket_name = Config.BUCKET_NAME
+is_bucket_id = Config.BUCKET_ID
+is_bucket_key = Config.BUCKET_KEY
+if (is_bucket_name is None) or (is_bucket_id is None) or (is_bucket_key is None):
+    print("Missing values from the Initial State configuration file\n")
+    sys.exit(1)
+
+# we made it this far, so it must have worked...
+print("Successfully read Initial State configuration values")
+print("Station ID:", is_bucket_name)
+
+# ============================================================================
 # initialize the Sense HAT object
 # ============================================================================
 try:
