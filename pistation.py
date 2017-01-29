@@ -135,13 +135,16 @@ def get_temp():
     t_cpu = get_cpu_temp()
     # Calculate the 'real' temperature compensating for CPU heating
     t_corr = t - ((t_cpu - t) / 1.5)
+    
     print("Temp (h): %s, Temp (p): %s, Temp (a): %s" % (t1, t2, t)
+
     # print("Temp (h): %s, Temp (p): %s, Temp (a): %s, Temp (cpu): $.2f, Temp (corr): %s" % (t1, t2, t, t_cpu, t_corr))
     # Finally, average out that value across the last three readings
+    
     t_corr = get_smooth(t_corr)
+    
     # convoluted, right?
     
-    # print("Temp (h): %s, Temp (p): %s, Temp (a): %s, Temp (cpu): $s, Temp (corr): %s" % (t1, t2, t, t_cpu, t_corr))
     
     # Return the calculated temperature
     return t_corr
