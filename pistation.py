@@ -169,7 +169,7 @@ def main():
             pressure = round(sense.get_pressure() * 0.0295300, 1)
             pressure_hpa = round(sense.get_pressure(), 1)
             if USE_METRIC:
-                print("Temp: %sC (%sF), Pressure: %s inHg, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
+                print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
             else:
                 print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
 
