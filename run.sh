@@ -4,4 +4,4 @@
 # http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/
 
 echo "Starting Weather Station"
-/usr/bin/python /home/pi/pistation/pistaton.py
+/usr/bin/python /home/pi/pi-station/pistaton.py
