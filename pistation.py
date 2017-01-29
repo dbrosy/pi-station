@@ -18,13 +18,14 @@ import datetime
 from urllib import urlencode
 import urllib2
 
+# Import config file
+from config import Config
+
 from sense_hat import SenseHat
 
 # Required for Initial State 
 from ISStreamer.Streamer import Streamer  
 
-# Import config file
-from config import Config
 
 # ============================================================================
 # Constants
