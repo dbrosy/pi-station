@@ -42,6 +42,9 @@ IS_UPLOAD = True
 # the weather underground URL used to upload weather data
 WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
 # Setup streamer for Initial State
+print("BUCKET_NAME" + BUCKET_NAME)
+print("BUCKET_KEY" + BUCKET_KEY)
+print("ACCESS_KEY" + ACCESS_KEY)
 streamer = Streamer(bucket_name=BUCKET_NAME, bucket_key=BUCKET_KEY, access_key=ACCESS_KEY)
 # some string constants
 SINGLE_HASH = "#"
