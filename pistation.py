@@ -352,4 +352,5 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print("\nExiting application\n")
+        sense.clear()
         sys.exit(0)
