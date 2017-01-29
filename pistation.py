@@ -142,7 +142,7 @@ def main():
     global last_temp
     
     # Setup streamer for Initial State
-    streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, , debug_level=1)
+    streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, debug_level=1)
     
     # initialize the lastMinute variable to the current time to start
     last_minute = datetime.datetime.now().minute
