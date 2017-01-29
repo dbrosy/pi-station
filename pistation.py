@@ -243,7 +243,7 @@ def main():
                             #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
                             streamer.log(":sunny: " + " Temperature(C)", temp_c)
                             streamer.log(":sweat_drops: " + " Humidity(%)", humidity)
-                            streamer.log(":cloud: " + " Pressure(IN)", pressure_hpa)
+                            streamer.log(":cloud: " + " Pressure(hPa)", pressure_hpa)
                         except:
                             print("Exception:", sys.exc_info()[0], SLASH_N)
                     else:
