@@ -234,7 +234,7 @@ def main():
                     # is IS_UPLOAD enabled (True)?                        
                     if IS_UPLOAD:
                         # Setup streamer for Initial State
-                        streamer = Streamer(bucket_name=IS_BUCKET_NAME, bucket_key=IS_BUCKET_KEY, access_key=IS_ACCESS_KEY)
+                        streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_buket_key, access_key=is_access_key)
                       
                         print("Uploading data to Initial State upload")
                         streamer.log(":sunny: " + SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
