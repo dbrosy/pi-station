@@ -3,7 +3,13 @@ Raspberry Pi Sense Hat Weather Station
 
 
 ## Instructions
-````bash
+
+Update Raspberry Pi
+```bash
 sudo apt-get update
 sudo apt-get upgrade -y
+```
+
+Install Pre-requisites
+
 
