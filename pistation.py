@@ -31,7 +31,7 @@ from ISStreamer.Streamer import Streamer
 # Constants
 # ============================================================================
 # specifies how often to measure values from the Sense HAT (in minutes)
-MEASUREMENT_INTERVAL = 1  # minutes (10)
+MEASUREMENT_INTERVAL = 10  # minutes
 # Set to False when testing the code and/or hardware
 # Use Metric instead of Imperial
 USE_METRIC = True
@@ -264,6 +264,9 @@ print(SINGLE_HASH, "By John M. Wargo (www.johnwargo.com)", SINGLE_HASH)
 print(HASHES)
 
 # make sure we don't have a MEASUREMENT_INTERVAL > 60
+if (Config.MEASUREMENT_INTERVAL is not None):
+    MEASUREMENT_INTERVAL = Config.MEASUREMENT_INTERVAL
+    
 if (MEASUREMENT_INTERVAL is None) or (MEASUREMENT_INTERVAL > 60):
     print("The application's 'MEASUREMENT_INTERVAL' cannot be empty or greater than 60")
     sys.exit(1)
