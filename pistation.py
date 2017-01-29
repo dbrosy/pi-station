@@ -3,9 +3,8 @@
   Name:     Rasbery Pi Weather Station
   Author:   Damian Brosnahan
   Credits:  John M. Wargo of www.johnwargo.com
-  
-  Details:  Raspbery Pi Weather Station logging Tempurature(Corrected), Humidity
-            and Pressure to Weather Underground and Initial State
+  Details:  Raspbery Pi Weather Station logging Tempurature(Corrected),
+            Humidity and Pressure to Weather Underground and Initial State
 ---------------------------------------------------------'''
 
 from __future__ import print_function
@@ -23,8 +22,8 @@ from config import Config
 
 from sense_hat import SenseHat
 
-# Required for Initial State 
-from ISStreamer.Streamer import Streamer  
+# Required for Initial State
+from ISStreamer.Streamer import Streamer
 
 
 # ============================================================================
@@ -40,7 +39,7 @@ WU_UPLOAD = True
 # Set to True to enable upload of weather data to Initial State
 IS_UPLOAD = True
 # the weather underground URL used to upload weather data
-WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
+WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"  # noqa
 # some string constants
 SINGLE_HASH = "#"
 HASHES = "########################################"
@@ -50,7 +49,7 @@ DEBUG = True
 OUT_CONSOLE = False
 
 # constants used to display an up and down arrows plus bars
-# modified from https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/
+# modified from https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/  # noqa
 # set up the colours (blue, red, empty)
 b = [0, 0, 255]  # blue
 r = [255, 0, 0]  # red
@@ -94,7 +93,7 @@ def c_to_f(input_temp):
 
 
 def get_cpu_temp():
-    # 'borrowed' from https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=111457
+    # 'borrowed' from https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=111457  # noqa
     # executes a command at the OS to pull in the CPU temperature
     res = os.popen('vcgencmd measure_temp').readline()
     return float(res.replace("temp=", "").replace("'C\n", ""))
@@ -143,10 +142,13 @@ def get_temp():
 
 def main():
     global last_temp
-    
+
     # Setup streamer for Initial State
-    streamer = Streamer(bucket_name=is_bucket_name, bucket_key=is_bucket_key, access_key=is_access_key, debug_level=1)
-    
+    streamer = Streamer(bucket_name=is_bucket_name,
+                        bucket_key=is_bucket_key,
+                        access_key=is_access_key,
+                        debug_level=1)
+
     # initialize the lastMinute variable to the current time to start
     last_minute = datetime.datetime.now().minute
     # on startup, just use the previous minute as lastMinute
@@ -176,11 +178,10 @@ def main():
             pressure_hpa = round(sense.get_pressure(), 1)
             if (OUT_CONSOLE):
                 # Console output enabled
-				        if (USE_METRIC):
-                    #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
-                else:
-                    #print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))
-            
+                if (USE_METRIC):
+                    print("Temp: %sC (%sF),Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))  # noqa
+                    else:
+                        print("Temp: %sF (%sC), Pressure: %s inHg, Humidity: %s%%" % (temp_f, temp_c, pressure, humidity))  # noqa
             # get the current minute
             current_minute = datetime.datetime.now().minute
             # is it the same minute as the last time we checked?
@@ -188,23 +189,23 @@ def main():
                 # reset last_minute to the current_minute
                 last_minute = current_minute
                 # is minute zero, or divisible by 10?
-                # we're only going to take measurements every MEASUREMENT_INTERVAL minutes
-                if (current_minute == 0) or ((current_minute % MEASUREMENT_INTERVAL) == 0):
+                # we're only going to take measurements every MEASUREMENT_INTERVAL minutes  # noqa
+                if (current_minute == 0) or ((current_minute % MEASUREMENT_INTERVAL) == 0):  # noqa
                     # get the reading timestamp
                     now = datetime.datetime.now()
-                    print("\n%d minute mark (%d @ %s)" % (MEASUREMENT_INTERVAL, current_minute, str(now)))
+                    print("\n%d minute mark (%d @ %s)" % (MEASUREMENT_INTERVAL, current_minute, str(now)))  # noqa
                     # did the temperature go up or down?
-                    if last_temp != temp_f:
-                        if last_temp > temp_f:
-                            # display a blue, down arrow
-                            sense.set_pixels(arrow_down)
-                        else:
-                            # display a red, up arrow
-                            sense.set_pixels(arrow_up)
+            if last_temp != temp_f:
+                if last_temp > temp_f:
+                    # display a blue, down arrow
+                    sense.set_pixels(arrow_down)
                     else:
-                        # temperature stayed the same
-                        # display red and blue bars
-                        sense.set_pixels(bars)
+                        # display a red, up arrow
+                        sense.set_pixels(arrow_up)
+                else:
+                    # temperature stayed the same
+                    # display red and blue bars
+                    sense.set_pixels(bars)
                     # set last_temp to the current temperature before we measure again
                     last_temp = temp_f
 
@@ -240,14 +241,13 @@ def main():
                     # ========================================================
                     # Upload the weather data to Initial State
                     # ========================================================
-                    # is IS_UPLOAD enabled (True)?                        
-                    if IS_UPLOAD:         
+                    # is IS_UPLOAD enabled (True)?
+                    if IS_UPLOAD:
                         print("Uploading data to Initial State")
                         try:
-
-                            #streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
-                            #streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
-                            #streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
+                            # streamer.log(":sunny: " + Config.SENSOR_LOCATION_NAME + " Temperature(C)", temp_c)
+                            # streamer.log(":sweat_drops: " + Config.SENSOR_LOCATION_NAME + " Humidity(%)", humidity)
+                            # streamer.log(":cloud: " + Config.SENSOR_LOCATION_NAME + " Pressure(IN)", pressure)
                             streamer.log(":sunny: " + " Temperature (C)", temp_c)
                             streamer.log(":sweat_drops: " + " Humidity (%)", humidity)
                             streamer.log(":cloud: " + " Pressure (hPa)", pressure_hpa)
@@ -255,7 +255,7 @@ def main():
                             print("Exception:", sys.exc_info()[0], SLASH_N)
                     else:
                         print("Skipping Initial State")
-                        
+
         # wait a second then check again
         # You can always increase the sleep value below to check less often
         time.sleep(1)  # this should never happen since the above is an infinite loop
@@ -274,7 +274,7 @@ print(HASHES)
 # make sure we don't have a MEASUREMENT_INTERVAL > 60
 if (Config.MEASUREMENT_INTERVAL is not None):
     MEASUREMENT_INTERVAL = Config.MEASUREMENT_INTERVAL
-    
+
 if (MEASUREMENT_INTERVAL is None) or (MEASUREMENT_INTERVAL > 60):
     print("The application's 'MEASUREMENT_INTERVAL' cannot be empty or greater than 60")
     sys.exit(1)
@@ -325,7 +325,7 @@ try:
         last_temp = round(get_temp(), 1)
     else:
         last_temp = round(c_to_f(get_temp()), 1)
-    
+
     print("Current temperature reading:", last_temp)
 except:
     print("Unable to initialize the Sense HAT library:", sys.exc_info()[0])
