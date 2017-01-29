@@ -47,7 +47,7 @@ HASHES = "########################################"
 SLASH_N = "\n"
 
 DEBUG = True
-
+OUT_CONSOLE = False
 
 # constants used to display an up and down arrows plus bars
 # modified from https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/
@@ -174,7 +174,7 @@ def main():
             # convert pressure from millibars to inHg before posting
             pressure = round(sense.get_pressure() * 0.0295300, 1)
             pressure_hpa = round(sense.get_pressure(), 1)
-            if (DEBUG):
+            if (OUT_CONSOLE):
               if USE_METRIC:
                   #print("Temp: %sC (%sF), Pressure: %s hPa, Humidity: %s%%" % (temp_c, temp_f, pressure_hpa, humidity))
               else:
